@@ -1,137 +1,136 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site-sub.master" AutoEventWireup="true" CodeFile="constructions-detail.aspx.cs" Inherits="constructions_detail" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>Quốc Khanh</title>
-    <meta name="description" content="Quốc Khanh" />
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">  
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="breadcrumb" Runat="Server">
-    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-    <li class="breadcrumb-item"><a href="#">Công trình</a></li>
-    <li class="breadcrumb-item"><a href="#">Đã thi công</a></li>
-    <li class="breadcrumb-item active">Khu công nghiệp Hải Sơn</li>
+<asp:Content ID="Content2" ContentPlaceHolderID="breadcrumb" runat="Server">
+    <asp:HiddenField ID="hdnLinkCat" runat="server" />
+    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+    <li class="breadcrumb-item"><a href="constructions.aspx">Công trình</a></li>
+    <li class="breadcrumb-item"><a href='<%= hdnLinkCat.Value %>'><asp:Label ID="lbNameCat" runat="server"></asp:Label></a></li>
+    <li class="breadcrumb-item active">
+        <asp:Label ID="lbName" runat="server"></asp:Label></li>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="aside" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="aside" runat="Server">
     <ul>
-        <li><a href="#">Đã thi công</a></li>
-        <li><a href="#">Đang thi công</a></li>
+        <asp:Repeater ID="Repeater1" runat="server"
+            DataSourceID="ObjectDataSource3" EnableViewState="false">
+            <ItemTemplate>
+                <li><a href='<%# Utils.progressTitle(Eval("ProjectCategoryName")) + "-ct-" + Eval("ProjectCategoryID")+ ".aspx" %>'><%# Eval("ProjectCategoryName") %></a></li>
+            </ItemTemplate>
+        </asp:Repeater>
     </ul>
+    <asp:ObjectDataSource ID="ObjectDataSource3" runat="server"
+        SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="3" Name="parentID" Type="Int32" />
+            <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+            <asp:Parameter Name="IsShowOnMenu" Type="String" />
+            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+            <asp:Parameter Name="IsAvailable" Type="String" DefaultValue="true" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="wrap_main" Runat="Server">
-    <h1 class="title-ct">khu công nghiệp Hải Sơn</h1>
-    <div class="wrapDetail">
-        <div class="slideImg">
-            <div class="slider-for">
-                <div class="item">
-                    <img src="assets/images/de.jpg" alt="" />
+<asp:Content ID="Content4" ContentPlaceHolderID="wrap_main" runat="Server">
+    <asp:Repeater ID="Repeater2" runat="server"
+        DataSourceID="ObjectDataSource1" EnableViewState="false">
+        <ItemTemplate>
+            <h1 class="title-ct"><%# Eval("ProjectTitle") %></h1>
+            <div class="wrapDetail">
+                <div class="slideImg">
+                    <div class="slider-for">
+                        <asp:Repeater ID="Repeater1" runat="server"
+                            DataSourceID="ObjectDataSource2" EnableViewState="false">
+                            <ItemTemplate>
+                                <div class="item">
+                                    <img id="Img1" src='<%# "~/res/project/album/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
+
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                    <div class="slider-nav">
+                        <asp:Repeater ID="Repeater3" runat="server"
+                            DataSourceID="ObjectDataSource2" EnableViewState="false">
+                            <ItemTemplate>
+                                <div class="item">
+                                    <img id="Img1" src='<%# "~/res/project/album/thumbs/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
+
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
-                <div class="item">
-                    <img src="assets/images/de.jpg" alt="" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/de.jpg" alt="" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/de.jpg" alt="" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/de.jpg" alt="" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/de.jpg" alt="" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/de.jpg" alt="" />
+                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"
+                    SelectMethod="ProjectImageSelectAll" TypeName="TLLib.ProjectImage">
+                    <SelectParameters>
+                        <asp:QueryStringParameter Name="ProjectID" QueryStringField="ctd" Type="String" />
+                        <asp:Parameter Name="IsAvailable" Type="String" DefaultValue="true" />
+                        <asp:Parameter Name="Priority" Type="String" />
+                        <asp:Parameter DefaultValue="true" Name="SortByPriority" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+                <div class="ctDetails">
+                    <h1>thông tin công trình</h1>
+                    <%# Eval("Content") %>
                 </div>
             </div>
-            <div class="slider-nav">
-                <div class="item">
-                    <img src="assets/images/thumb1.jpg" alt="" /></div>
-                <div class="item">
-                    <img src="assets/images/thumb1.jpg" alt="" /></div>
-                <div class="item">
-                    <img src="assets/images/thumb1.jpg" alt="" /></div>
-                <div class="item">
-                    <img src="assets/images/thumb1.jpg" alt="" /></div>
-                <div class="item">
-                    <img src="assets/images/thumb1.jpg" alt="" /></div>
-                <div class="item">
-                    <img src="assets/images/thumb1.jpg" alt="" /></div>
-                <div class="item">
-                    <img src="assets/images/thumb1.jpg" alt="" /></div>
-            </div>
-        </div>
-        <div class="ctDetails">
-            <h1>thông tin công trình</h1>
-            <ul>
-                <li><b>Địa điểm xây dựng</b><span>Ấp Bình Tiền 2 – Xã Đức Hòa Hạ - Huyện Đức Hòa – Tỉnh Long An.</span></li>
-                <li><b>Chủ đầu tư</b><span>Chủ đầu tư</span></li>
-                <li><b>Đơn vị thiết kế</b><span>DNTN Quốc Khanh</span></li>
-                <li><b>Đơn vị thi công</b><span>DNTN Quốc Khanh</span></li>
-                <li><b>Ngày khởi công</b><span>03/05/2016</span></li>
-                <li><b>Ngày hoàn thành</b><span>03/05/2017</span></li>
-                <li><b>Diện tích nền trệt</b><span>150m x 400m</span></li>
-            </ul>
-            <p>
-                <b>Vị trí Khu công nghiệp</b> <br />
-                Đức Hòa là vùng kinh tế trọng điểm phía nam, nơi "đất lành chim đậu”, cách quốc lộ 1A 12km, cách xã Bình Lợi, huyện Bình Chánh, Tp. HCM 3km, giao thông thuận lợi tạo điều kiện cho nhiều nhà đầu tư, doanh nghiệp chọn địa điểm đầu tư phát triển kinh tế, đặc biệt là công nghiệp.
-            </p>
-            <p>
-                <b>Hạ tầng kỹ thuật</b> <br />
-                Địa chất rất tốt bao gồm đất, sét, sỏi, dưới tầng móng do đó chi phí đầu tư để xây dựng nhà xưởng giảm, thấp so với các khu vực khác là 30%. Đường chính dẫn vào khu công nghiệp rộng 26m, bao gồm lề, hai bên vỉa hè có cây xanh nhiều bóng mát, các đường phụ rộng 22m.
-            </p>
-            <p>
-                <b>Đầu tư kinh doanh khu công nghiệp</b> <br />
-                Công ty TNHH Hải Sơn là chủ đầu tư cơ sở hạ tầng với hình thức giao đất có đóng tiền sử dụng đất, chuyển mục đích sử dụng toàn bộ cho các doanh nghiệp đến đầu tư. Tất cả các chi phí đóng tiền sử dụng đất do công ty Hải Sơn chi trả và chịu trách nhiệm lập thủ tục đăng ký GPKD và thủ tục chuyển quyền sử dụng đất trong thời gian sớm nhất nhằm tạo điều kiện thuận lợi cho các doanh nghiệp có nhiều cơ hội để chọn điểm dừng là khu công nghiệp Hải Sơn. Bên cạnh đó giá chuyển nhượng hợp lý so với các khu vực khác.
-            </p>
-        </div>
-    </div>
+        </ItemTemplate>
+    </asp:Repeater>
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
+        SelectMethod="ProjectSelectOne" TypeName="TLLib.Project">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="ProjectID" QueryStringField="ctd" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="lienquan" Runat="Server">
+<asp:Content ID="Content5" ContentPlaceHolderID="lienquan" runat="Server">
     <div class="wrap-lienquan">
         <h1>công trình khác</h1>
         <div class="construction-cate row">
-            <div class="item col-md-4 col-sm-6">
-                <div class="img">
-                    <a href="#">
-                        <img src="assets/images/ct1.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="content">
-                    <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                    <a href="#">
-                        <h1>khu công nghiệp hải sơn</h1>
-                    </a>
-                    <p>Cung cấp vật liệu xây dựng</p>
-                </div>
-            </div>
-            <div class="item col-md-4 col-sm-6">
-                <div class="img">
-                    <a href="#">
-                        <img src="assets/images/ct2.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="content">
-                    <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                    <a href="#">
-                        <h1>khu công nghiệp hải sơn</h1>
-                    </a>
-                    <p>Cung cấp vật liệu xây dựng</p>
-                </div>
-            </div>
-            <div class="item col-md-4 col-sm-6">
-                <div class="img">
-                    <a href="#">
-                        <img src="assets/images/ct3.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="content">
-                    <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                    <a href="#">
-                        <h1>khu công nghiệp hải sơn</h1>
-                    </a>
-                    <p>Cung cấp vật liệu xây dựng</p>
-                </div>
-            </div>
+            <asp:ListView ID="ListView1" runat="server"
+                DataSourceID="ObjectDataSource4"
+                EnableModelValidation="True">
+                <ItemTemplate>
+                    <div class="item col-sm-6">
+                        <div class="img">
+                            <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-ctd-" + Eval("ProjectID")+ ".aspx" %>'>
+                                <img id="Img1" src='<%# "~/res/project/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                            <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-ctd-" + Eval("ProjectID")+ ".aspx" %>'>
+                                <h1><%# Eval("ProjectTitle") %></h1>
+                            </a>
+                            <p><%# Eval("Description") %></p>
+                        </div>
+                    </div>
+                </ItemTemplate>
+                <LayoutTemplate>
+                    <span runat="server" id="itemPlaceholder" />
+                </LayoutTemplate>
+            </asp:ListView>
+            <asp:ObjectDataSource ID="ObjectDataSource4" runat="server"
+                SelectMethod="ProjectSameSelectAll" TypeName="TLLib.Project">
+                <SelectParameters>
+                    <asp:Parameter Name="RerultCount" Type="String" DefaultValue="12" />
+                    <asp:QueryStringParameter DefaultValue="" Name="ProjectID" QueryStringField="ctd" Type="String" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+        </div>
+        <div class="pager">
+            <asp:DataPager ID="DataPager1" runat="server" PageSize="3" PagedControlID="ListView1">
+                <Fields>
+                    <asp:NextPreviousPagerField ButtonType="Link" FirstPageText="" ShowFirstPageButton="false"
+                        ShowNextPageButton="false" ShowPreviousPageButton="true" PreviousPageText=""
+                        RenderDisabledButtonsAsLabels="true" ButtonCssClass="prev fa fa-caret-left" />
+                    <asp:NumericPagerField ButtonCount="5" NumericButtonCssClass="current" CurrentPageLabelCssClass="current" />
+                    <asp:NextPreviousPagerField ButtonType="Link" LastPageText="" ShowLastPageButton="false"
+                        ShowNextPageButton="true" ShowPreviousPageButton="false" ButtonCssClass="next fa fa-caret-right"
+                        NextPageText="" RenderDisabledButtonsAsLabels="true" />
+                </Fields>
+            </asp:DataPager>
         </div>
     </div>
 </asp:Content>

@@ -8,109 +8,80 @@
     <div class="banner">
         <div id="wowslider-container1">
             <div class="ws_images">
-                <ul>
-                    <li><a href="#">
-                        <img src="assets/images/banner1.jpg" alt="" title="Ecovet" id="wows1_0" /></a>Xin chào</li>
-                    <li>
-                        <img src="assets/images/banner2.jpg" alt="" title="Ecovet" id="wows1_1" />Dinh dưỡng cho thú nuôi
-                    </li>
-                    <li>
-                        <img src="assets/images/banner3.jpg" alt="" title="Ecovet" id="wows1_2" />Dinh dưỡng cho thú nuôi
-                    </li>
-                    <li>
-                        <img src="assets/images/banner4.jpg" alt="" title="Ecovet" id="wows1_3" />Dinh dưỡng cho thú nuôi
-                    </li>
-                </ul>
+
+                <asp:ListView ID="ListView2" runat="server"
+                    DataSourceID="ObjectDataSource2"
+                    EnableModelValidation="True">
+                    <ItemTemplate>
+                        <li><a href='<%# Eval("Website") %>'>
+                            <img src='<%# "/res/banner/" + Eval("FileName") %>' alt='<%# Eval("FileName") %>' title='<%# Eval("CompanyName") %>' id="<%# "wows1_" + ((Container.DataItemIndex) == 0 ? 0 : Container.DataItemIndex + 1) %>" /></a><%# Eval("Description") %></li>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <ul>
+                            <span runat="server" id="itemPlaceholder" />
+                        </ul>
+                    </LayoutTemplate>
+                </asp:ListView>
             </div>
-            <%--<div class="ws_bullets">
-                <div>
-                    <a href="#" title=""><span>1</span></a>
-                    <a href="#" title=""><span>2</span></a>
-                    <a href="#" title=""><span>3</span></a>
-                    <a href="#" title=""><span>4</span></a>
-                </div>
-            </div>--%>
         </div>
     </div>
+    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"
+        SelectMethod="AdsBannerSelectAll" TypeName="TLLib.AdsBanner">
+        <SelectParameters>
+            <asp:Parameter Name="StartRowIndex" Type="String" />
+            <asp:Parameter Name="EndRowIndex" Type="String" />
+            <asp:Parameter Name="AdsCategoryID" Type="String" DefaultValue="1" />
+            <asp:Parameter Name="CompanyName" Type="String" />
+            <asp:Parameter Name="Website" Type="String" />
+            <asp:Parameter Name="FromDate" Type="String" />
+            <asp:Parameter Name="ToDate" Type="String" />
+            <asp:Parameter DefaultValue="true" Name="IsAvailable" Type="String" />
+            <asp:Parameter Name="Priority" Type="String" />
+            <asp:Parameter DefaultValue="true" Name="SortByPriority" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
     <section class="aboutUs">
         <div class="container">
-            <div class="left">
-                <div class="head">
-                    <h1>GIỚI THIỆU <span>DOANH NGHIỆP QUỐC KHANH</span></h1>
-                </div>
-                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue.</p>
-            </div>
-            <div class="right">
-                <div class="item-cate">
-                    <div class="item">
-                        <div class="img">
-                            <img src="assets/images/gt1.png" alt="" />
-                        </div>
-                        <p>Uy tín, <br />
-                            Chất lượng</p>
-                    </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="assets/images/gt2.png" alt="" />
-                        </div>
-                        <p>Trang thiết bị tiên tiến</p>
-                    </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="assets/images/gt3.png" alt="" />
-                        </div>
-                        <p>Đội ngũ kỹ thuật chuyên môn cao</p>
-                    </div>
-                </div>
-            </div>
+            <asp:Repeater ID="Repeater1" runat="server"
+                DataSourceID="ObjectDataSource4" EnableViewState="false">
+                <ItemTemplate>
+                    <%# Eval("Description") %>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
     </section>
+    <asp:ObjectDataSource ID="ObjectDataSource4" runat="server"
+        SelectMethod="ProjectCategorySelectOne" TypeName="TLLib.ProjectCategory">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="1" Name="ProjectCategoryID" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
     <section class="proService">
         <div class="container">
             <h1 class="title">sản phẩm & dịch vụ</h1>
             <div class="grid">
-                <div class="grid-item grid-item-width2 grid-item-height2">
-                    <a href="#">
-                        <img src="assets/images/sv1.png" alt="" />
-                        <p>SAN LẤP MẶT BẰNG</p>
-                    </a>
-                </div>
-                <div class="grid-item">
-                    <a href="#">
-                        <img src="assets/images/sv2.png" alt="" />
-                        <p>THI CÔNG HẠ TẦNG</p>
-                    </a>
-                </div>
-                <div class="grid-item">
-                    <a href="#">
-                        <img src="assets/images/sv3.png" alt="" />
-                        <p>VẬN TẢI HÀNG HÓA</p>
-                    </a>
-                </div>
-                <div class="grid-item">
-                    <a href="#">
-                        <img src="assets/images/sv4.png" alt="" />
-                        <p>CHO THUÊ XE CƠ GIỚI</p>
-                    </a>
-                </div>
-                <div class="grid-item">
-                    <a href="#">
-                        <img src="assets/images/sv5.png" alt="" />
-                        <p>BẤT ĐỘNG SẢN</p>
-                    </a>
-                </div>
-                <div class="grid-item grid-item-width2">
-                    <a href="#">
-                        <img src="assets/images/sv6.png" alt="" />
-                        <p>KINH DOANH VẬT LIỆU XÂY DỰNG</p>
-                    </a>
-                </div>
-                <div class="grid-item grid-item-width2">
-                    <a href="#">
-                        <img src="assets/images/sv7.png" alt="" />
-                        <p>THIẾT KẾ - THI CÔNG CÔNG TRÌNH DÂN DỤNG - CÔNG NGHIỆP</p>
-                    </a>
-                </div>
+                <asp:Repeater ID="Repeater2" runat="server"
+                    DataSourceID="ObjectDataSource5" EnableViewState="false">
+                    <ItemTemplate>
+                        <div class="grid-item grid-item-width2 grid-item-height2">
+                           <a href='<%# Utils.progressTitle(Eval("ProjectCategoryName")) + "-p-" + Eval("ProjectCategoryID")+ ".aspx" %>' >
+                                   <img id="Img1" src='<%# "~/res/productcategory/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
+                    
+                                <p><%# Eval("ProjectCategoryName") %></p>
+                            </a>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater> 
+    <asp:ObjectDataSource ID="ObjectDataSource5" runat="server"
+        SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="2" Name="parentID" Type="Int32" />
+            <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+            <asp:Parameter Name="IsShowOnMenu" Type="String" />
+            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+            <asp:Parameter Name="IsAvailable" Type="String" DefaultValue="true" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
             </div>
         </div>
     </section>
@@ -121,138 +92,106 @@
                     <h1>CÔNG TRÌNH <span>TIÊU BIỂU <i class="fa fa-circle"></i></span></h1>
                 </div>
                 <div class="right">
-                    <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit nec tellus a odio tincidunt auctor</p>
+                    <%--<p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit nec tellus a odio tincidunt auctor</p>--%>
                 </div>
             </div>
             <div class="cateContruc owl-carousel">
-                <div class="item">
-                    <div class="img">
-                        <a href="#">
-                        <img src="assets/images/ct1.png" alt="" /></a>
-                    </div>
-                    <div class="content">
-                        <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                        <div class="content-hidden">
-                            <a href="#">khu công nghiệp hải sơn</a>
-                            <p>Cung cấp vật liệu xây dựng</p>
+                <asp:ListView ID="ListView1" runat="server"
+                    DataSourceID="ObjectDataSource1"
+                    EnableModelValidation="True">
+                    <ItemTemplate>
+                        <div class="item">
+                            <div class="img">
+                                <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-ctd-" + Eval("ProjectID")+ ".aspx" %>'>
+                                    <img id="Img1" src='<%# "~/res/project/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                <div class="content-hidden">
+                                    <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-ctd-" + Eval("ProjectID")+ ".aspx" %>'>
+                                        <h1><%# Eval("ProjectTitle") %></h1>
+                                    </a>
+                                    <p><%# Eval("Description") %></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <a href="#">
-                        <img src="assets/images/ct2.png" alt="" /></a>
-                    </div>
-                    <div class="content">
-                        <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                        <div class="content-hidden">
-                            <a href="#">khu công nghiệp hải sơn</a>
-                            <p>Cung cấp vật liệu xây dựng</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <a href="#">
-                        <img src="assets/images/ct3.png" alt="" /></a>
-                    </div>
-                    <div class="content">
-                        <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                        <div class="content-hidden">
-                            <a href="#">khu công nghiệp hải sơn</a>
-                            <p>Cung cấp vật liệu xây dựng</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <a href="#">
-                        <img src="assets/images/ct1.png" alt="" /></a>
-                    </div>
-                    <div class="content">
-                        <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                        <div class="content-hidden">
-                            <a href="#">khu công nghiệp hải sơn</a>
-                            <p>Cung cấp vật liệu xây dựng</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <a href="#">
-                        <img src="assets/images/ct2.png" alt="" /></a>
-                    </div>
-                    <div class="content">
-                        <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                        <div class="content-hidden">
-                            <a href="#">khu công nghiệp hải sơn</a>
-                            <p>Cung cấp vật liệu xây dựng</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <a href="#">
-                        <img src="assets/images/ct3.png" alt="" /></a>
-                    </div>
-                    <div class="content">
-                        <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                        <div class="content-hidden">
-                            <a href="#">khu công nghiệp hải sơn</a>
-                            <p>Cung cấp vật liệu xây dựng</p>
-                        </div>
-                    </div>
-                </div>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <span runat="server" id="itemPlaceholder" />
+                    </LayoutTemplate>
+                </asp:ListView>
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
+                    SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                    <SelectParameters>
+                        <asp:Parameter Name="StartRowIndex" Type="String" />
+                        <asp:Parameter Name="EndRowIndex" Type="String" />
+                        <asp:Parameter Name="Keyword" Type="String" />
+                        <asp:Parameter Name="ProjectTitle" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" />
+                        <asp:QueryStringParameter DefaultValue="3" Name="ProjectCategoryID" QueryStringField="ct" Type="String" />
+                        <asp:Parameter Name="Tag" Type="String" />
+                        <asp:Parameter Name="IsShowOnHomePage" Type="String" DefaultValue="true" />
+                        <asp:Parameter Name="FromDate" Type="String" />
+                        <asp:Parameter Name="ToDate" Type="String" />
+                        <asp:Parameter DefaultValue="true" Name="IsAvailable" Type="String" />
+                        <asp:Parameter Name="Priority" Type="String" />
+                        <asp:Parameter DefaultValue="true" Name="SortByPriority" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
             </div>
         </div>
     </section>
     <section class="secNews">
         <div class="container">
             <div class="head">
-                <h1 class="title">
-                    TIN TỨC - SỰ KIỆN <i class="fa fa-circle"></i>
+                <h1 class="title">TIN TỨC - SỰ KIỆN <i class="fa fa-circle"></i>
                 </h1>
                 <div class="showAll">
-                    <a href="#">Xem tất cả <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                    <a href="news.aspx">Xem tất cả <i class="fa fa-caret-right" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="cate-news">
-                <div class="item">
-                    <div class="img">
-                        <img src="assets/images/news1.png" alt="" />
-                    </div>
-                    <div class="content">
-                        <a href="#">Thép tăng giá, các công trình xây dựng lao đao</a>
-                        <p>Sở chỉ đạo triển khai và nhân rộng các mô hình bảo đảm an toàn thực phẩm trong kinh doanh dịch...</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <img src="assets/images/news2.png" alt="" />
-                    </div>
-                    <div class="content">
-                        <a href="#">Giá dầu lại tăng</a>
-                        <p>Sở chỉ đạo triển khai và nhân rộng các mô hình bảo đảm an toàn thực phẩm trong kinh doanh dịch...</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <img src="assets/images/news3.png" alt="" />
-                    </div>
-                    <div class="content">
-                        <a href="#">Xi măng tiêu thụ chậm - giá vẫn tăng</a>
-                        <p>Sở chỉ đạo triển khai và nhân rộng các mô hình bảo đảm an toàn thực phẩm trong kinh doanh dịch...</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img">
-                        <img src="assets/images/news4.png" alt="" />
-                    </div>
-                    <div class="content">
-                        <a href="#">Hiệp hội Thép giải thích lý do tăng giá</a>
-                        <p>Sở chỉ đạo triển khai và nhân rộng các mô hình bảo đảm an toàn thực phẩm trong kinh doanh dịch...</p>
-                    </div>
-                </div>
+                <asp:ListView ID="ListView3" runat="server"
+                    DataSourceID="ObjectDataSource3"
+                    EnableModelValidation="True">
+                    <ItemTemplate>
+                        <div class="item">
+                            <div class="img">
+                                <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-nd-" + Eval("ProjectID")+ ".aspx" %>'>
+                                    <img id="Img1" src='<%# "~/res/news/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-nd-" + Eval("ProjectID")+ ".aspx" %>'>
+                                    <%# Eval("ProjectTitle") %> 
+                                </a>
+                                <p><%# Eval("Description") %></p>
+                            </div>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <span runat="server" id="itemPlaceholder" />
+                    </LayoutTemplate>
+                </asp:ListView>
+
+                <asp:ObjectDataSource ID="ObjectDataSource3" runat="server"
+                    SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                    <SelectParameters>
+                        <asp:Parameter Name="StartRowIndex" Type="String" DefaultValue="1" />
+                        <asp:Parameter Name="EndRowIndex" Type="String" DefaultValue="20" />
+                        <asp:Parameter Name="Keyword" Type="String" />
+                        <asp:Parameter Name="ProjectTitle" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" />
+                        <asp:Parameter Name="ProjectCategoryID" DefaultValue="4" Type="String" />
+                        <asp:Parameter Name="Tag" Type="String" />
+                        <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                        <asp:Parameter Name="FromDate" Type="String" />
+                        <asp:Parameter Name="ToDate" Type="String" />
+                        <asp:Parameter DefaultValue="true" Name="IsAvailable" Type="String" />
+                        <asp:Parameter Name="Priority" Type="String" />
+                        <asp:Parameter DefaultValue="true" Name="SortByPriority" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
             </div>
         </div>
     </section>

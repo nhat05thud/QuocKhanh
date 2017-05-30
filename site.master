@@ -75,11 +75,12 @@
                     <div class="top-head">
                         <div class="container">
                             <div class="logo">
-                                <a href="~/" runat="server"><img src="assets/images/logo.png" /></a>
+                                <a href="~/" runat="server">
+                                    <img src="assets/images/logo.png" /></a>
                             </div>
                             <div class="slogan">
                                 <h1>QUỐC KHANH Co. Pte.,</h1>
-                                <p><i class="fa fa-circle" aria-hidden="true"></i> Chất Lượng & Uy Tín</p>
+                                <p><i class="fa fa-circle" aria-hidden="true"></i>Chất Lượng & Uy Tín</p>
                             </div>
                             <div class="right">
                                 <div class="hotline">
@@ -116,8 +117,8 @@
                                 </a>
                             </div>
                             <div class="search">
-                                <asp:TextBox ID="TextBox1" runat="server" placeholder="Nhập từ khóa tại đây"></asp:TextBox>
-                                <asp:Button ID="Button1" runat="server" Text="" />
+                                <asp:TextBox ID="txtTimKiem" runat="server" placeholder="Nhập từ khóa tại đây"></asp:TextBox>
+                                <asp:Button ID="btnTimKiem" runat="server" Text="" OnClick="btnTimKiem_Click" />
                             </div>
                         </div>
                     </div>
@@ -129,91 +130,74 @@
                 </div>
                 <div class="container">
                     <div class="slidePartner owl-carousel">
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt1.png" alt="" /></a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/images/dt2.png" alt="" /></a>
-                        </div>
+                        <asp:Repeater ID="Repeater2" runat="server"
+                            DataSourceID="ObjectDataSource2" EnableViewState="false">
+                            <ItemTemplate>
+                                <div class="item">
+                                    <a href='<%#  Eval("LinkWebsite") %>'>
+                                        <img id="Img1" src='<%# "~/res/partner/" + Eval("PartnerImage") %>' runat="server" alt='<%# Eval("PartnerImage") %> ' /></a>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"
+                            SelectMethod="PartnerSelectAll" TypeName="TLLib.Partner">
+                            <SelectParameters>
+                                <asp:Parameter Name="Keyword" Type="String" />
+                                <asp:Parameter Name="PartnerName" Type="String" />
+                                <asp:Parameter Name="Address" Type="String" />
+                                <asp:Parameter Name="LinkWebsite" Type="String" />
+                                <asp:Parameter Name="IsAvailable" Type="String" DefaultValue="true" />
+                                <asp:Parameter Name="Priority" Type="String" />
+                                <asp:Parameter Name="SortByPriority" Type="String" DefaultValue="true" />
+                            </SelectParameters>
+                        </asp:ObjectDataSource>
                     </div>
                 </div>
                 <footer id="footer">
                     <div class="container">
                         <div class="pull-left">
-                            <h1>CÔNG TY QUỐC KHANH</h1>
-                            <ul>
-                                <li class="local">Địa chỉ: 3A54 Trần Văn Giàu, Ấp 3, xã Phạm Văn Hai, Huyện Bình Chánh,  Tp. HCM</li>
-                                <li class="phone">Điện thoại: (08) 8772214 - 8773939 - Fax: (08) 8773838</li>
-                                <li class="mail">Email: quockhanh@quockhanh.com.vn</li>
-                            </ul>
+                            <asp:Repeater ID="ListView2" runat="server"
+                                DataSourceID="ObjectDataSource1" EnableViewState="false">
+                                <ItemTemplate>
+                                    <%# Eval("Description") %>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
+                                SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                                <SelectParameters>
+                                    <asp:Parameter Name="StartRowIndex" Type="String" DefaultValue="1" />
+                                    <asp:Parameter Name="EndRowIndex" Type="String" DefaultValue="1" />
+                                    <asp:Parameter Name="Keyword" Type="String" />
+                                    <asp:Parameter Name="ProjectTitle" Type="String" />
+                                    <asp:Parameter Name="Description" Type="String" />
+                                    <asp:Parameter DefaultValue="5" Name="ProjectCategoryID" Type="String" />
+                                    <asp:Parameter Name="Tag" Type="String" />
+                                    <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                    <asp:Parameter Name="FromDate" Type="String" />
+                                    <asp:Parameter Name="ToDate" Type="String" />
+                                    <asp:Parameter DefaultValue="true" Name="IsAvailable" Type="String" />
+                                    <asp:Parameter Name="Priority" Type="String" />
+                                    <asp:Parameter DefaultValue="true" Name="SortByPriority" Type="String" />
+                                </SelectParameters>
+                            </asp:ObjectDataSource>
                         </div>
                         <div class="pull-right">
                             <div class="follow">
-                                <span>Follow us</span>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <asp:Repeater ID="Repeater1" runat="server"
+                                    DataSourceID="ObjectDataSource1" EnableViewState="false">
+                                    <ItemTemplate>
+                                        <%# Eval("Tag") %>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
-                            <p>Tổng số lượt truy cập: 2003</p>
-                            <p>Đang online: 1</p>
+                            <p>
+                                Tổng số lượt truy cập:   
+                                <asp:Label ID="lblsumLuotTruyCap" runat="server" Text="" Font-Bold="true"></asp:Label>
+                            </p>
+                            <p>
+                                Đang online:  
+                                <asp:Label ID="lblsoLuotOnline" runat="server" Text="" Font-Bold="true"></asp:Label>
+                            </p>
                             <p class="copyright">
                                 © 2017 Dn Quốc Khanh. All Right Reserved. <a href="http://www.tranlegroup.com" target="_blank">Thiet ke web Tran Le</a>
                             </p>
@@ -246,7 +230,7 @@
         <script src="assets/js/isotope.pkgd.js"></script>
         <!-- main js -->
         <script src="assets/js/jquery.main.js"></script>
-        
+
         <!-- end main js -->
     </form>
 </body>
