@@ -210,6 +210,7 @@ public partial class ad_single_projectcategory : System.Web.UI.Page
                     FileImageName.UploadedFiles[0].SaveAs(Server.MapPath(strFullPath));
                     // ResizeCropImage.ResizeByCondition(strFullPath, 40, 40);
                 }
+                Response.Redirect(Page.Request.Url.AbsolutePath);
             }
         }
         if (e.CommandName == "DeleteImage")

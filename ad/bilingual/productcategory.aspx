@@ -100,7 +100,7 @@
         <asp:RadGrid ID="RadGrid1" runat="server" Culture="vi-VN" AllowMultiRowSelection="True"
             DataSourceID="ObjectDataSource1" GridLines="Horizontal" AutoGenerateColumns="False"
             AllowAutomaticDeletes="True" ShowStatusBar="True" OnItemCommand="RadGrid1_ItemCommand"
-            OnItemDataBound="RadGrid1_ItemDataBound" PageSize="50" CssClass="grid" AllowAutomaticUpdates="True"
+            OnItemDataBound="RadGrid1_ItemDataBound" PageSize="50" CssClass="grid" 
             CellSpacing="0">
             <ClientSettings EnableRowHoverStyle="true">
                 <Selecting AllowRowSelect="True" EnableDragToSelectRows="false" />
@@ -231,9 +231,8 @@
                     <asp:GridTemplateColumn HeaderText="Ảnh">
                         <ItemTemplate>
                             <asp:Panel ID="Panel1" runat="server" Visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'>
-                                <a class="screenshot" rel='../../res/productcategory/<%# Eval("ImageName") %>'>
-                                    <img alt="" src="../assets/images/photo.png" />
-                                </a>
+                                    <img alt="" src='../../res/productcategory/<%# Eval("ImageName") %>' width="100" />
+                                 
                                 <asp:LinkButton ID="lnkDeleteImage" runat="server" CommandName="DeleteImage" OnClientClick="return confirm('Xóa ảnh này ?')"
                                     rel='<%#  Eval("ProjectCategoryID") + "#" + Eval("ImageName") %>'>
                             <img alt="Xóa ảnh" title="Xóa ảnh" src="../assets/images/delete-icon.png" />

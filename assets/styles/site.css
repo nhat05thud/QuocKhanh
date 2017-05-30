@@ -1035,7 +1035,7 @@ a:visited, a:focus {
     text-transform:uppercase;
     margin:0 0 10px 0;
 }
-.wrapContact .top-contact ul li i {
+.wrapContact .top-contact ul li i ,.wrapContact .top-contact ul li em{
     width:20px;
     color:#007200;
 }
@@ -1084,12 +1084,12 @@ a:visited, a:focus {
     border:0;
     margin-left:90px;
 }
-.wrapContact .bot-contact .col-md-5 i {
+.wrapContact .bot-contact .col-md-5 i,.wrapContact .bot-contact .col-md-5 em {
     font-size:12px;
     color:#686868;
     font-style:italic;
 }
-.wrapContact .bot-contact .col-md-5 i span{
+.wrapContact .bot-contact .col-md-5 i span,.wrapContact .bot-contact .col-md-5 em span{
     color:#f70b0c;
 }
 .address-info > h1 {
@@ -1327,7 +1327,7 @@ a:visited, a:focus {
     text-align:right;
     color:#fff;
 }
-#footer .pull-right .follow i {
+#footer .pull-right .follow i,#footer .pull-right .follow em {
     width:25px;
     height:25px;
     color:#007200;

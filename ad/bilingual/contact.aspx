@@ -173,7 +173,7 @@
                     </td>
                     <td>
                         <asp:RadComboBox Filter="Contains" ID="ddlSearchCategory" runat="server" DataSourceID="ObjectDataSource2"
-                            DataTextField="ProjectCategoryName" DataValueField="ProjectProjectCategoryID" OnDataBound="DropDownList_DataBound"
+                            DataTextField="ProjectCategoryName" DataValueField="ProjectCategoryID" OnDataBound="DropDownList_DataBound"
                             Width="134px" EmptyMessage="- Tất cả -">
                         </asp:RadComboBox>
                     </td>
@@ -399,7 +399,7 @@
                                                         </td>
                                                         <td>
                                                             <asp:RadComboBox Filter="Contains" ID="ddlCategory" runat="server" DataSourceID="ObjectDataSource2"
-                                                                DataTextField="ProjectCategoryName" DataValueField="ProjectProjectCategoryID" Width="504px"
+                                                                DataTextField="ProjectCategoryName" DataValueField="ProjectCategoryID" Width="504px"
                                                                 OnDataBound="DropDownList_DataBound" EmptyMessage="- Chọn -">
                                                             </asp:RadComboBox>
                                                         </td>
