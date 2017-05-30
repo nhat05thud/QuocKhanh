@@ -63,7 +63,7 @@
                 <asp:Repeater ID="Repeater2" runat="server"
                     DataSourceID="ObjectDataSource5" EnableViewState="false">
                     <ItemTemplate>
-                        <div class="grid-item grid-item-width2 grid-item-height2">
+                        <div class="grid-item">
                             <a href='<%# Utils.progressTitle(Eval("ProjectCategoryName")) + "-p-" + Eval("ProjectCategoryID")+ ".aspx" %>'>
                                 <img id="Img1" src='<%# "~/res/productcategory/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
 
@@ -110,7 +110,7 @@
                                 <div class="button"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 <div class="content-hidden">
                                     <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-ctd-" + Eval("ProjectID")+ ".aspx" %>'>
-                                        <h1><%# Eval("ProjectTitle") %></h1>
+                                        <%# Eval("ProjectTitle") %>
                                     </a>
                                     <p><%# Eval("Description") %></p>
                                 </div>
