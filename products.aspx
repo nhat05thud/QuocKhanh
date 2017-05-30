@@ -89,7 +89,8 @@
                 <asp:Parameter DefaultValue="true" Name="SortByPriority" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <div class="pager">
+      
+    </div>               <div class="pager">
             <asp:DataPager ID="DataPager1" runat="server" PageSize="6" PagedControlID="ListView1">
                 <Fields>
                     <asp:NextPreviousPagerField ButtonType="Link" FirstPageText="" ShowFirstPageButton="false"
@@ -102,7 +103,6 @@
                 </Fields>
             </asp:DataPager>
         </div>
-    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="lienquan" runat="Server">
 </asp:Content>

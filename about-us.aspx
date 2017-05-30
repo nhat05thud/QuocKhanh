@@ -37,8 +37,7 @@
     </asp:ObjectDataSource>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="wrap_main" runat="Server">
-    <asp:Repeater ID="ListView1" runat="server"
-        DataSourceID="ObjectDataSource1" EnableViewState="false">
+    <asp:Repeater ID="ListView1" runat="server"    EnableViewState="false">
         <ItemTemplate>
             <h1><%# Eval("ProjectTitle") %></h1>
             <div class="contentWrap">
