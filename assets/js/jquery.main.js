@@ -14,6 +14,11 @@ $(document).ready(function () {
         EqualSizer('.secNews .cate-news .item');
     },500);
 });
+function addClassGrid() {
+    $('.proService .grid .grid-item').first().addClass('grid-item-width2 grid-item-height2');
+    $('.proService .grid .grid-item').last().addClass('grid-item-width2');
+    $('.proService .grid .grid-item').last().prev().addClass('grid-item-width2');
+}
 //function===============================================================================================
 /*=============================fun=========================================*/
 function myfunload() {
@@ -30,18 +35,21 @@ function myfunload() {
     $('#menu li').hover(function () {
         $(this).children('ul').stop(true, false, true).slideToggle(300);
     });
-    $('.cateContruc .item .content .button').click(function () {
+    $(document).on('click', '.cateContruc .item .content .button', function () {
         $(this).next('.content-hidden').stop(true, false, true).slideToggle(300);
     });
     /*=====  set data-img = background  =====*/
+    addClassGrid();
     /*======= isotope =======*/
-    $('.grid').isotope({
-        itemSelector: '.grid-item',
-        masonry: {
-            columnWidth: 270,
-            gutter: 10
-        }
-    });
+    setTimeout(function () {
+        $('.grid').isotope({
+            itemSelector: '.grid-item',
+            masonry: {
+                columnWidth: 270,
+                gutter: 10
+            }
+        });
+    }, 500);
 
     /*=========== owlCarousel ===========*/
     $('.cateContruc').owlCarousel({
