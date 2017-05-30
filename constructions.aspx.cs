@@ -30,7 +30,8 @@ public partial class constructions : System.Web.UI.Page
                 }
             }
             else
-            {                                                            
+            {
+                lbName.Text = "Công Trình";                                                  
                 Page.Title = "Công Trình";
                 meta.Content = "Công Trình";
                 Header.Controls.Add(meta);

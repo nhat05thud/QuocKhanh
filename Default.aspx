@@ -64,24 +64,24 @@
                     DataSourceID="ObjectDataSource5" EnableViewState="false">
                     <ItemTemplate>
                         <div class="grid-item grid-item-width2 grid-item-height2">
-                           <a href='<%# Utils.progressTitle(Eval("ProjectCategoryName")) + "-p-" + Eval("ProjectCategoryID")+ ".aspx" %>' >
-                                   <img id="Img1" src='<%# "~/res/productcategory/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
-                    
+                            <a href='<%# Utils.progressTitle(Eval("ProjectCategoryName")) + "-p-" + Eval("ProjectCategoryID")+ ".aspx" %>'>
+                                <img id="Img1" src='<%# "~/res/productcategory/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
+
                                 <p><%# Eval("ProjectCategoryName") %></p>
                             </a>
                         </div>
                     </ItemTemplate>
-                </asp:Repeater> 
-    <asp:ObjectDataSource ID="ObjectDataSource5" runat="server"
-        SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
-        <SelectParameters>
-            <asp:Parameter DefaultValue="2" Name="parentID" Type="Int32" />
-            <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
-            <asp:Parameter Name="IsShowOnMenu" Type="String" />
-            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
-            <asp:Parameter Name="IsAvailable" Type="String" DefaultValue="true" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
+                </asp:Repeater>
+                <asp:ObjectDataSource ID="ObjectDataSource5" runat="server"
+                    SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="2" Name="parentID" Type="Int32" />
+                        <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+                        <asp:Parameter Name="IsShowOnMenu" Type="String" />
+                        <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                        <asp:Parameter Name="IsAvailable" Type="String" DefaultValue="true" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
             </div>
         </div>
     </section>
@@ -168,6 +168,7 @@
                                 </a>
                                 <p><%# Eval("Description") %></p>
                             </div>
+                        </div>
                     </ItemTemplate>
                     <LayoutTemplate>
                         <span runat="server" id="itemPlaceholder" />
@@ -178,7 +179,7 @@
                     SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
                     <SelectParameters>
                         <asp:Parameter Name="StartRowIndex" Type="String" DefaultValue="1" />
-                        <asp:Parameter Name="EndRowIndex" Type="String" DefaultValue="20" />
+                        <asp:Parameter Name="EndRowIndex" Type="String" DefaultValue="4" />
                         <asp:Parameter Name="Keyword" Type="String" />
                         <asp:Parameter Name="ProjectTitle" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />

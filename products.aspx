@@ -45,7 +45,7 @@
         </SelectParameters>
     </asp:ObjectDataSource>
     <div class="news-cate row">
-       
+
         <asp:ListView ID="ListView1" runat="server"
             DataSourceID="ObjectDataSource1"
             EnableModelValidation="True">
@@ -65,6 +65,7 @@
                             <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-pd-" + Eval("ProjectID")+ ".aspx" %>'>Xem chi tiết</a>
                         </div>
                     </div>
+                </div>
             </ItemTemplate>
             <LayoutTemplate>
                 <span runat="server" id="itemPlaceholder" />
@@ -73,8 +74,8 @@
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
             SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
             <SelectParameters>
-                <asp:Parameter Name="StartRowIndex" Type="String"  />
-                <asp:Parameter Name="EndRowIndex" Type="String"  />
+                <asp:Parameter Name="StartRowIndex" Type="String" />
+                <asp:Parameter Name="EndRowIndex" Type="String" />
                 <asp:Parameter Name="Keyword" Type="String" />
                 <asp:Parameter Name="ProjectTitle" Type="String" />
                 <asp:Parameter Name="Description" Type="String" />
@@ -88,6 +89,19 @@
                 <asp:Parameter DefaultValue="true" Name="SortByPriority" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
+        <div class="pager">
+            <asp:DataPager ID="DataPager1" runat="server" PageSize="6" PagedControlID="ListView1">
+                <Fields>
+                    <asp:NextPreviousPagerField ButtonType="Link" FirstPageText="" ShowFirstPageButton="false"
+                        ShowNextPageButton="false" ShowPreviousPageButton="true" PreviousPageText=""
+                        RenderDisabledButtonsAsLabels="true" ButtonCssClass="prev fa fa-caret-left" />
+                    <asp:NumericPagerField ButtonCount="5" NumericButtonCssClass="current" CurrentPageLabelCssClass="current" />
+                    <asp:NextPreviousPagerField ButtonType="Link" LastPageText="" ShowLastPageButton="false"
+                        ShowNextPageButton="true" ShowPreviousPageButton="false" ButtonCssClass="next fa fa-caret-right"
+                        NextPageText="" RenderDisabledButtonsAsLabels="true" />
+                </Fields>
+            </asp:DataPager>
+        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="lienquan" runat="Server">

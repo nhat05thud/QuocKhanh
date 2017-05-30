@@ -189,12 +189,12 @@ public partial class ad_single_project : System.Web.UI.Page
             string MetaDescription = ((RadTextBox)row.FindControl("txtMetaDescription")).Text.Trim();
             string ProjectTitle = ((RadTextBox)row.FindControl("txtProjectTitle")).Text.Trim();
             string ConvertedProjectTitle = Common.ConvertTitle(ProjectTitle);
-            string Description = ((RadTextBox)row.FindControl("txtDescription")).Text.Trim(); 
+            string Description = ((RadTextBox)row.FindControl("txtDescription")).Text.Trim();
             string Content = FCKEditorFix.Fix(((RadEditor)row.FindControl("txtContent")).Content.Trim());
             string Tag = ((RadTextBox)row.FindControl("txtTag")).Text.Trim();
             string ProjectCategoryID = ((RadComboBox)row.FindControl("ddlCategory")).SelectedValue;
             if (ProjectCategoryID == "")
-            {               
+            {
                 ProjectCategoryID = "3";
             }
             string IsShowOnHomePage = ((CheckBox)row.FindControl("chkIsShowOnHomePage")).Checked.ToString();
@@ -202,13 +202,13 @@ public partial class ad_single_project : System.Web.UI.Page
             string MetaTittleEn = ((RadTextBox)row.FindControl("txtMetaTittleEn")).Text.Trim();
             string MetaDescriptionEn = ((RadTextBox)row.FindControl("txtMetaDescriptionEn")).Text.Trim();
             string ProjectTitleEn = ((RadTextBox)row.FindControl("txtProjectTitleEn")).Text.Trim();
-            string DescriptionEn = ((RadTextBox)row.FindControl("txtDescriptionEn")).Text.Trim(); 
+            string DescriptionEn = ((RadTextBox)row.FindControl("txtDescriptionEn")).Text.Trim();
             string ContentEn = FCKEditorFix.Fix(((RadEditor)row.FindControl("txtContentEn")).Content.Trim());
             string TagEn = ((RadTextBox)row.FindControl("txtTagEn")).Text.Trim();
             string MetaTittleCn = ((RadTextBox)row.FindControl("txtMetaTittleCn")).Text.Trim();
             string MetaDescriptionCn = ((RadTextBox)row.FindControl("txtMetaDescriptionCn")).Text.Trim();
             string ProjectTitleCn = ((RadTextBox)row.FindControl("txtProjectTitleCn")).Text.Trim();
-            string DescriptionCn = ((RadTextBox)row.FindControl("txtDescriptioncn")).Text.Trim(); 
+            string DescriptionCn = ((RadTextBox)row.FindControl("txtDescriptioncn")).Text.Trim();
             string ContentCn = FCKEditorFix.Fix(((RadEditor)row.FindControl("txtContentCn")).Content.Trim());
             string TagCn = ((RadTextBox)row.FindControl("txtTagCn")).Text.Trim();
 
@@ -250,7 +250,7 @@ public partial class ad_single_project : System.Web.UI.Page
                 {
                     FileImageName.UploadedFiles[0].SaveAs(Server.MapPath(strFullPath));
                     // ResizeCropImage.ResizeByCondition(strFullPath, 800, 800);
-                   // ResizeCropImage.CreateThumbNailByCondition("~/res/project/", "~/res/project/thumbs/", ImageName, 120, 120);
+                    // ResizeCropImage.CreateThumbNailByCondition("~/res/project/", "~/res/project/thumbs/", ImageName, 120, 120);
                 }
 
                 if (TempImage.Rows.Count > 0)
@@ -314,7 +314,8 @@ public partial class ad_single_project : System.Web.UI.Page
                     FileImageName.UploadedFiles[0].SaveAs(Server.MapPath(strFullPath));
                     //ResizeCropImage.ResizeByCondition(strFullPath, 800, 800);
                     //ResizeCropImage.CreateThumbNailByCondition("~/res/project/", "~/res/project/thumbs/", ImageName, 120, 120);
-                }
+                } 
+                Response.Redirect(Page.Request.Url.AbsolutePath);
             }
         }
         else if (e.CommandName == "Cancel")

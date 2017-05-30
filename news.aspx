@@ -29,7 +29,7 @@
     </asp:ObjectDataSource>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="wrap_main" runat="Server">
-    <h1 class="title-ct"><%# lbName.Text %></h1>
+    <h1 class="title-ct"><%= lbName.Text %></h1>
     <div class="wrapDetail">
         <div class="wrapNews">
             <asp:Repeater ID="Repeater2" runat="server"
@@ -69,6 +69,7 @@
                                 </a>
                                 <p><%# Eval("Description") %></p>
                             </div>
+                        </div>
                     </ItemTemplate>
                     <LayoutTemplate>
                         <span runat="server" id="itemPlaceholder" />

@@ -16,16 +16,20 @@ public partial class site : System.Web.UI.MasterPage
             lblsoLuotOnline.Text += Application["visitors_online"].ToString();
             lblsumLuotTruyCap.Text += Application["TatCa"].ToString();
             Page.Header.DataBind();
-            string page = Request.Url.PathAndQuery.ToLower();
+            string page = Request.Url.AbsolutePath.ToLower();                           
 
             string startScript = "<script type='text/javascript'>";
             string endScript = "')</script>";
             string activePage = "";
 
-            if (page.Contains("san-pham.aspx?ci=") || page.Contains("chi-tiet-san-pham.aspx?pi="))
-                activePage = "san-pham.aspx";
-            else if (page.Contains("chi-tiet-tin-tuc.aspx?id="))
-                activePage = "tin-tuc.aspx";
+            if (page.Contains("-p-") || page.Contains("-pd-") || page.Contains("products.aspx"))
+                activePage = "products.aspx";
+            else if (page.Contains("-ct-") || page.Contains("-ctd-") || page.Contains("constructions.aspx"))
+                activePage = "constructions.aspx";
+            else if (page.Contains("-nw-") || page.Contains("-nd-") || page.Contains("news.aspx"))
+                activePage = "news.aspx";
+            else if (page.Contains("-ab-") ||  page.Contains("about-us.aspx"))
+                activePage = "about-us.aspx";
             else if (!page.EndsWith("default.aspx"))
                 activePage = Path.GetFileName(page);
 

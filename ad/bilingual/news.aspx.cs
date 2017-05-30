@@ -315,6 +315,7 @@ public partial class ad_single_project : System.Web.UI.Page
                     //ResizeCropImage.ResizeByCondition(strFullPath, 800, 800);
                    // ResizeCropImage.CreateThumbNailByCondition("~/res/news/", "~/res/news/thumbs/", ImageName, 120, 120);
                 }
+                Response.Redirect(Page.Request.Url.AbsolutePath);
             }
         }
         else if (e.CommandName == "Cancel")

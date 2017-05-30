@@ -155,11 +155,11 @@
                     <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Tin Tức"
                         Font-Bold="True">
                         <Items>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/article.aspx" Text="Quản Lý Tin Tức">
+                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/news.aspx" Text="Quản Lý Tin Tức">
                             </asp:RadMenuItem>
                             <asp:RadMenuItem runat="server" IsSeparator="True">
                             </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/bilingual/articlecategory.aspx">
+                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/bilingual/newscategory.aspx">
                             </asp:RadMenuItem>
                         </Items>
                     </asp:RadMenuItem>   

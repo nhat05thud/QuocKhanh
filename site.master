@@ -54,16 +54,12 @@
             $('#menu li a[href*="' + page + '"]').parent("li").addClass("active");
         }
         function changeSubActiveMenu(page) {
-            $('#menu li li').removeClass("active");
-            $('#menu li li a[href$="' + page + '"]').parents("li").addClass("active");
-            $('.menu-list li').removeClass("active");
-            $('.menu-list li a[href$="' + page + '"]').parents("li").addClass("active");
-            var value1 = $('a.a-link-sp').attr('href');
-            $('#menu li li a[href$="' + value1 + '"]').parents("li").addClass("active");
-            $('.menu-list li a[href$="' + value1 + '"]').parents("li").addClass("active");
-            var value2 = $('a.a-link-spc').attr('href');
-            $('#menu li li a[href$="' + value2 + '"]').parents("li").addClass("active");
-            $('.menu-list li a[href$="' + value2 + '"]').parents("li").addClass("active");
+            
+            $('#menu li').removeClass("active");
+            $('.aside ul li').removeClass("active");
+            var value = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            $('#menu li a[href$="' + page + '"]').parent("li").addClass("active");
+            $('.aside ul  li a[href$="' + value + '"]').parent("li").addClass("active");
         }
     </script>
 </head>

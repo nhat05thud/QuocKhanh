@@ -92,7 +92,7 @@
                 DataSourceID="ObjectDataSource4"
                 EnableModelValidation="True">
                 <ItemTemplate>
-                    <div class="item col-sm-6">
+                    <div class="item col-sm-4">
                         <div class="img">
                             <a href='<%# Utils.progressTitle(Eval("ProjectTitle")) + "-ctd-" + Eval("ProjectID")+ ".aspx" %>'>
                                 <img id="Img1" src='<%# "~/res/project/" + Eval("ImageName") %>' runat="server" alt='<%# Eval("ImageName") %> ' />
@@ -119,7 +119,7 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>
-        <div class="pager">
+        <div class="pager" >
             <asp:DataPager ID="DataPager1" runat="server" PageSize="3" PagedControlID="ListView1">
                 <Fields>
                     <asp:NextPreviousPagerField ButtonType="Link" FirstPageText="" ShowFirstPageButton="false"

@@ -1361,7 +1361,7 @@ a:visited, a:focus {
 /*===========pager=======*/
 .pager
 {
-    text-align:left;
+    text-align:center;
     vertical-align: top;
     margin: 0;
     position: relative;

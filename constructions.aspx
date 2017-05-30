@@ -29,7 +29,7 @@
     </asp:ObjectDataSource>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="wrap_main" runat="Server">
-    <h1 class="title-ct">công trình <%# lbName.Text %></h1>
+    <h1 class="title-ct">công trình <%= lbName.Text %></h1>
     <div class="construction-cate row">
         <asp:ListView ID="ListView1" runat="server"
             DataSourceID="ObjectDataSource1"

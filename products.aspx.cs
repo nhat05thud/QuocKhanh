@@ -31,6 +31,7 @@ public partial class products : System.Web.UI.Page
             }
             else
             {
+                lbName.Text = "Sản Phẩm - Dịch Vụ";
                 Page.Title = "Sản Phẩm - Dịch Vụ";
                 meta.Content = "Sản Phẩm - Dịch Vụ";
                 Header.Controls.Add(meta);

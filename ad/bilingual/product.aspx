@@ -334,7 +334,7 @@
                         <ItemTemplate>
                             <asp:Panel ID="Panel1" runat="server" Visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                 Width="95">
-                                <img alt="" src='<%# "~/res/product/thumbs/" + Eval("ImageName") %>' width="80" runat="server"
+                                <img alt="" src='<%# "~/res/product/" + Eval("ImageName") %>' width="80" runat="server"
                                     visible='<%# string.IsNullOrEmpty(Eval("ImageName").ToString()) ? false : true %>' />
                                 <asp:LinkButton ID="lnkDeleteImage" runat="server" rel='<%#  Eval("ProjectID") + "#" + Eval("ImageName") %>'
                                     CommandName="DeleteImage" OnClientClick="return confirm('Xóa ảnh này ?')">
@@ -394,7 +394,7 @@
                                                                 Checked='<%# (Container is GridEditFormInsertItem) ? true : (string.IsNullOrEmpty(Eval("IsAvailable").ToString()) ? false : Eval("IsAvailable")) %>' />
                                                         </td>
                                                     </tr>
-                                                    <tr class="invisible">
+                                                    <tr>
                                                         <td class="left">Danh mục
                                                         </td>
                                                         <td>

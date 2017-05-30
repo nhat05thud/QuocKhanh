@@ -32,6 +32,7 @@ public partial class news : System.Web.UI.Page
             }
             else
             {
+                lbName.Text = "Tin Tức";
                 Page.Title = "Tin Tức";
                 meta.Content = "Tin Tức";
                 Header.Controls.Add(meta);
