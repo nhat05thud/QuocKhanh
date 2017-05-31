@@ -49,6 +49,10 @@
                         <%# Eval("Description") %>
                     </ItemTemplate>
                 </asp:Repeater>
+                <div class="clr"></div>
+                <div class="readmore">
+                    <a href="#">xem thêm</a>
+                </div>
             </div>
             <div class="right">
                 <div class="item-cate">

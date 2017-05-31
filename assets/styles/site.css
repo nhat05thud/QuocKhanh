@@ -290,6 +290,19 @@ a:visited, a:focus {
     font-size: 36px;
     font-family: 'Roboto';
 }
+.aboutUs .left .readmore {
+    margin-top:5px;
+}
+.aboutUs .left .readmore a{
+    color:#fff;
+    background:#007200;
+    padding:3px 15px;
+    display:inline-block;
+    border-radius:3px;
+}
+.aboutUs .left .readmore a:hover {
+    background:#ec2327;
+}
 .aboutUs .right {
     width:50%;
     float:right;
