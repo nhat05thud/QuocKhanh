@@ -298,9 +298,9 @@
                             <%# Container.DataSetIndex + 1 %>
                             <asp:HiddenField ID="hdnImageName" runat="server" Value='<%# Eval("ImageName") %>' />
                         </ItemTemplate>
-                    </asp:GridTemplateColumn>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-                    <asp:GridBoundColumn DataField="ProjectTitle" HeaderText="Tên Sản Phẩm" SortExpression="ProjectTitle" />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                    <asp:GridBoundColumn DataField="ProjectTitleEn" HeaderText="Tên Sản Phẩm En" SortExpression="ProjectTitleEn" />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                    </asp:GridTemplateColumn>
+                    <asp:GridBoundColumn DataField="ProjectTitle" HeaderText="Tên Sản Phẩm" SortExpression="ProjectTitle" />
+                    <asp:GridBoundColumn DataField="ProjectTitleEn" HeaderText="Tên Sản Phẩm En" SortExpression="ProjectTitleEn" />
                     <asp:GridBoundColumn DataField="ProjectTitleCn" HeaderText="Tên Sản Phẩm Cn" SortExpression="ProjectTitleCn" />
                     <asp:GridBoundColumn DataField="ProjectCategoryName" HeaderText="Danh mục" SortExpression="ProjectCategoryName" />
                     <asp:GridTemplateColumn DataField="Priority" HeaderStyle-Width="1%" HeaderText="Thứ tự"
@@ -330,7 +330,7 @@
                             <%# string.Format("{0:dd/MM/yyyy hh:mm tt}", Eval("CreateDate"))%>
                         </ItemTemplate>
                     </asp:GridTemplateColumn>
-                    <asp:GridTemplateColumn DataField="ImageName" HeaderText="Ảnh"   SortExpression="ImageName">
+                    <asp:GridTemplateColumn DataField="ImageName" HeaderText="Ảnh" SortExpression="ImageName">
                         <ItemTemplate>
                             <asp:Panel ID="Panel1" runat="server" Visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                 Width="95">
@@ -349,7 +349,7 @@
                         <asp:Panel ID="Panel1" runat="server" DefaultButton="lnkUpdate">
                             <table width="100%">
                                 <tr>
-                                    <td valign="top" style="width:500px">
+                                    <td valign="top" style="width: 500px">
                                         <div class="sub_box">
                                             <div class="head">
                                                 Thông Tin Sản Phẩm
@@ -369,7 +369,7 @@
                                                     </asp:RadButton>
                                                 </div>
                                                 <table class="search">
-                                                    <tr >
+                                                    <tr>
                                                         <td class="left" valign="top">Ảnh đại diện
                                                         </td>
                                                         <td runat="server">
@@ -383,7 +383,8 @@
                                                                 Localization-Remove="Xóa" OnFileUploaded="FileImageAlbum_FileUploaded">
                                                             </asp:RadAsyncUpload>--%>
                                                             <asp:HiddenField ID="hdnNewImageName" runat="server" />
-                                                        </td>
+                                                            <br />
+                                                            KT: 270 x 195  </td>
                                                     </tr>
                                                     <tr class="invisible">
                                                         <td class="left" colspan="2">
@@ -431,7 +432,7 @@
                                                                 EmptyMessage="Meta Description...">
                                                             </asp:RadTextBox>
                                                         </td>
-                                                    </tr>    
+                                                    </tr>
                                                     <tr>
                                                         <td class="left">Tên Sản Phẩm
                                                         </td>
@@ -628,166 +629,168 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>                                                   
-                                        <td valign="top">
-                                            <div class="sub_box">
-                                                <div class="head">
-                                                    Ảnh Sản Phẩm
-                                                </div>
-                                                <div class="cont">
-                                                    <asp:RadAjaxPanel ID="RadAjaxPanel2" runat="server" LoadingPanelID="RadAjaxLoadingPanel1">
-                                                        <asp:RadAsyncUpload ID="FileImageAlbum" runat="server" MultipleFileSelection="Automatic"
-                                                            TargetFolder="~/res/product/album/" TemporaryFolder="~/res/TempAsync" Width="100%"
-                                                            AllowedFileExtensions="jpg,jpeg,gif,png" Localization-Select="Chọn" Localization-Cancel="Hủy"
-                                                            Localization-Remove="Xóa" OnFileUploaded="FileImageAlbum_FileUploaded">
-                                                        </asp:RadAsyncUpload>
-                                                        <asp:RadButton ID="btnUpload" runat="server" Text="Tải lên" ShowPostBackMask="False">
-                                                            <Icon PrimaryIconUrl="~/ad/assets/images/up.png" />
-                                                        </asp:RadButton>
-                                                        <asp:RadAjaxPanel ID="RadAjaxPanel3" runat="server" LoadingPanelID="RadAjaxLoadingPanel1">
-                                                            <asp:RadListView runat="server" ID="RadListView1" DataSourceID="OdsProjectPhotoAlbum"
-                                                                DataKeyNames="ProjectImageID" OverrideDataSourceControlSorting="True" OnItemCommand="RadListView1_ItemCommand"
-                                                                PageSize="100" Width="100%" Visible='<%# (Container is GridEditFormInsertItem) ? false : true %>'
-                                                                ShowPostBackMask="false">
-                                                                <LayoutTemplate>
-                                                                    <div runat="server" id="itemPlaceholder" />
-                                                                    <div class="clear">
+                                    </td>
+                                    <td valign="top">
+                                        <div class="sub_box">
+                                            <div class="head">
+                                                Ảnh Sản Phẩm
+                                            </div>
+                                            <div class="cont">
+                                                <asp:RadAjaxPanel ID="RadAjaxPanel2" runat="server" LoadingPanelID="RadAjaxLoadingPanel1">
+                                                    <asp:RadAsyncUpload ID="FileImageAlbum" runat="server" MultipleFileSelection="Automatic"
+                                                        TargetFolder="~/res/product/album/" TemporaryFolder="~/res/TempAsync" Width="100%"
+                                                        AllowedFileExtensions="jpg,jpeg,gif,png" Localization-Select="Chọn" Localization-Cancel="Hủy"
+                                                        Localization-Remove="Xóa" OnFileUploaded="FileImageAlbum_FileUploaded">
+                                                    </asp:RadAsyncUpload>
+                                                    <asp:RadButton ID="btnUpload" runat="server" Text="Tải lên" ShowPostBackMask="False">
+                                                        <Icon PrimaryIconUrl="~/ad/assets/images/up.png" />
+                                                    </asp:RadButton>
+                                                    <br />
+                                                    KT : 680 x 488
+                                                    <asp:RadAjaxPanel ID="RadAjaxPanel3" runat="server" LoadingPanelID="RadAjaxLoadingPanel1">
+                                                        <asp:RadListView runat="server" ID="RadListView1" DataSourceID="OdsProjectPhotoAlbum"
+                                                            DataKeyNames="ProjectImageID" OverrideDataSourceControlSorting="True" OnItemCommand="RadListView1_ItemCommand"
+                                                            PageSize="100" Width="100%" Visible='<%# (Container is GridEditFormInsertItem) ? false : true %>'
+                                                            ShowPostBackMask="false">
+                                                            <LayoutTemplate>
+                                                                <div runat="server" id="itemPlaceholder" />
+                                                                <div class="clear">
+                                                                </div>
+                                                            </LayoutTemplate>
+                                                            <ItemTemplate>
+                                                                <asp:HiddenField ID="hdnImageName" runat="server" Value='<%# Eval("ImageName") %>' />
+                                                                <fieldset style="float: left; margin: 5px; padding: 2px 2px 2px 2px; position: relative; background: #eeeeee;"
+                                                                    class="myClass">
+                                                                    <a href='<%# "~/res/product/album/" + Eval("ImageName") %>' runat="server" class="lightbox">
+                                                                        <img alt="" src='<%# "~/res/product/album/thumbs/" + Eval("ImageName") %>' runat="server"
+                                                                            width="100" height="100" />
+                                                                    </a>
+                                                                    <div align="right">
+                                                                        <asp:LinkButton Visible="false" ID="btnEditSelected" runat="server" CommandName="Edit" CssClass="item"><img width="14px" class="vam" alt="" title="Sửa" src="../assets/images/tools.png" /></asp:LinkButton>
+                                                                        <asp:LinkButton ID="LinkButton1" OnClientClick="return confirm('Xóa ảnh?')" runat="server"
+                                                                            CommandName="Delete" CssClass="item"><img width="14px" class="vam" alt="" title="Xóa ảnh" src="../assets/images/trash.png" /></asp:LinkButton>
                                                                     </div>
-                                                                </LayoutTemplate>
-                                                                <ItemTemplate>
-                                                                    <asp:HiddenField ID="hdnImageName" runat="server" Value='<%# Eval("ImageName") %>' />
-                                                                    <fieldset style="float: left; margin: 5px; padding: 2px 2px 2px 2px; position: relative; background: #eeeeee;"
-                                                                        class="myClass">
-                                                                        <a href='<%# "~/res/product/album/" + Eval("ImageName") %>' runat="server" class="lightbox">
-                                                                            <img alt="" src='<%# "~/res/product/album/thumbs/" + Eval("ImageName") %>' runat="server"
-                                                                                width="100" height="100" />
-                                                                        </a>
-                                                                        <div align="right">
-                                                                            <asp:LinkButton Visible="false" ID="btnEditSelected" runat="server" CommandName="Edit" CssClass="item"><img width="14px" class="vam" alt="" title="Sửa" src="../assets/images/tools.png" /></asp:LinkButton>
-                                                                            <asp:LinkButton ID="LinkButton1" OnClientClick="return confirm('Xóa ảnh?')" runat="server"
-                                                                                CommandName="Delete" CssClass="item"><img width="14px" class="vam" alt="" title="Xóa ảnh" src="../assets/images/trash.png" /></asp:LinkButton>
-                                                                        </div>
-                                                                    </fieldset>
-                                                                </ItemTemplate>
-                                                                <EditItemTemplate>
-                                                                    <asp:HiddenField ID="hdnProjectImageID" runat="server" Value='<%# Eval("ProjectImageID") %>' />
-                                                                    <asp:HiddenField ID="hdnImageName" runat="server" Value='<%# Eval("ImageName") %>' />
-                                                                    <asp:Panel ID="Panel2" runat="server" DefaultButton="lnkUpdate">
-                                                                        <h3 class="searchTitle clear">Cập Nhật Ảnh</h3>
-                                                                        <table width="100%">
-                                                                            <tr>
-                                                                                <td valign="top" style="padding-right: 10px">
-                                                                                    <table class="search" width="100%">
-                                                                                        <tr>
-                                                                                            <td class="left" style="width: 70px">Tiêu đề ảnh
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                <asp:RadTextBox ID="txtTitle" Width="100%" runat="server" Text='<%# Bind("Title") %>'
-                                                                                                    EmptyMessage="Tiêu đề ảnh...">
-                                                                                                </asp:RadTextBox>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td class="left" valign="top">Mô tả
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                <asp:RadTextBox ID="txtDescription" runat="server" Width="100%" Text='<%# Bind("Descripttion")%>'
-                                                                                                    EmptyMessage="Mô tả...">
-                                                                                                </asp:RadTextBox>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td class="left">Thứ tự
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                <asp:RadNumericTextBox ID="txtPriority" runat="server" Width="100%" Text='<%# Bind("Priority") %>'
-                                                                                                    EmptyMessage="Thứ tự..." Type="Number">
-                                                                                                    <NumberFormat AllowRounding="false" DecimalDigits="0" GroupSeparator="." />
-                                                                                                </asp:RadNumericTextBox>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td class="left" colspan="2">
-                                                                                                <asp:CheckBox ID="chkAddIsAvailable" runat="server" Checked='<%# (Container is RadListViewInsertItem) ? true : Eval("IsAvailable")%>'
-                                                                                                    Text="Hiển thị" CssClass="checkbox" />
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                </td>
-                                                                                <td valign="top">
-                                                                                    <img alt="" src='<%# "~/res/product/album/thumbs/" + Eval("ImageName") %>' runat="server"
-                                                                                        width="100" />
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <div class="edit">
-                                                                            <hr />
-                                                                            <asp:RadButton ID="lnkUpdate" runat="server" CommandName='Update' Text='Cập nhật'>
-                                                                                <Icon PrimaryIconUrl="~/ad/assets/images/ok.png" />
-                                                                            </asp:RadButton>
-                                                                            &nbsp;&nbsp;
+                                                                </fieldset>
+                                                            </ItemTemplate>
+                                                            <EditItemTemplate>
+                                                                <asp:HiddenField ID="hdnProjectImageID" runat="server" Value='<%# Eval("ProjectImageID") %>' />
+                                                                <asp:HiddenField ID="hdnImageName" runat="server" Value='<%# Eval("ImageName") %>' />
+                                                                <asp:Panel ID="Panel2" runat="server" DefaultButton="lnkUpdate">
+                                                                    <h3 class="searchTitle clear">Cập Nhật Ảnh</h3>
+                                                                    <table width="100%">
+                                                                        <tr>
+                                                                            <td valign="top" style="padding-right: 10px">
+                                                                                <table class="search" width="100%">
+                                                                                    <tr>
+                                                                                        <td class="left" style="width: 70px">Tiêu đề ảnh
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <asp:RadTextBox ID="txtTitle" Width="100%" runat="server" Text='<%# Bind("Title") %>'
+                                                                                                EmptyMessage="Tiêu đề ảnh...">
+                                                                                            </asp:RadTextBox>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="left" valign="top">Mô tả
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <asp:RadTextBox ID="txtDescription" runat="server" Width="100%" Text='<%# Bind("Descripttion")%>'
+                                                                                                EmptyMessage="Mô tả...">
+                                                                                            </asp:RadTextBox>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="left">Thứ tự
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <asp:RadNumericTextBox ID="txtPriority" runat="server" Width="100%" Text='<%# Bind("Priority") %>'
+                                                                                                EmptyMessage="Thứ tự..." Type="Number">
+                                                                                                <NumberFormat AllowRounding="false" DecimalDigits="0" GroupSeparator="." />
+                                                                                            </asp:RadNumericTextBox>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="left" colspan="2">
+                                                                                            <asp:CheckBox ID="chkAddIsAvailable" runat="server" Checked='<%# (Container is RadListViewInsertItem) ? true : Eval("IsAvailable")%>'
+                                                                                                Text="Hiển thị" CssClass="checkbox" />
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td valign="top">
+                                                                                <img alt="" src='<%# "~/res/product/album/thumbs/" + Eval("ImageName") %>' runat="server"
+                                                                                    width="100" />
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <div class="edit">
+                                                                        <hr />
+                                                                        <asp:RadButton ID="lnkUpdate" runat="server" CommandName='Update' Text='Cập nhật'>
+                                                                            <Icon PrimaryIconUrl="~/ad/assets/images/ok.png" />
+                                                                        </asp:RadButton>
+                                                                        &nbsp;&nbsp;
                                                                         <asp:RadButton ID="btnCancel" runat="server" CommandName='Cancel' Text='Hủy'>
                                                                             <Icon PrimaryIconUrl="~/ad/assets/images/cancel.png" />
                                                                         </asp:RadButton>
-                                                                        </div>
-                                                                        <div class="clear">
-                                                                        </div>
-                                                                    </asp:Panel>
-                                                                </EditItemTemplate>
-                                                            </asp:RadListView>
-                                                            <asp:ObjectDataSource ID="OdsProjectPhotoAlbum" runat="server" DeleteMethod="ProjectImageDelete"
-                                                                SelectMethod="ProjectImageSelectAll" TypeName="TLLib.ProjectImage" UpdateMethod="ProjectImageUpdate">
-                                                                <DeleteParameters>
-                                                                    <asp:Parameter Name="ProjectImageID" Type="String" />
-                                                                </DeleteParameters>
-                                                                <SelectParameters>
-                                                                    <asp:ControlParameter Name="ProjectID" ControlID="hdnProjectID" PropertyName="Value"
-                                                                        Type="String" />
-                                                                    <asp:Parameter Name="IsAvailable" Type="String" />
-                                                                    <asp:Parameter Name="Priority" Type="String" />
-                                                                    <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
-                                                                </SelectParameters>
-                                                                <UpdateParameters>
-                                                                    <asp:Parameter Name="ProjectImageID" Type="String" />
-                                                                    <asp:Parameter Name="ImageName" Type="String" />
-                                                                    <asp:Parameter Name="ConvertedProjectTitle" Type="String" />
-                                                                    <asp:Parameter Name="Title" Type="String" />
-                                                                    <asp:Parameter Name="Descripttion" Type="String" />
-                                                                    <asp:Parameter Name="TitleEn" Type="String" />
-                                                                    <asp:Parameter Name="DescripttionEn" Type="String" />
-                                                                    <asp:ControlParameter Name="ProjectID" ControlID="hdnProjectID" PropertyName="Value"
-                                                                        Type="String" />
-                                                                    <asp:Parameter Name="IsAvailable" Type="String" />
-                                                                    <asp:Parameter Name="Priority" Type="String" />
-                                                                </UpdateParameters>
-                                                            </asp:ObjectDataSource>
-                                                            <asp:RadListView runat="server" ID="RadListView2" PageSize="100" Width="100%" Visible='<%# (Container is GridEditFormInsertItem) ? true : false %>'
-                                                                OnItemCommand="RadListView2_ItemCommand">
-                                                                <LayoutTemplate>
-                                                                    <div runat="server" id="itemPlaceholder" />
+                                                                    </div>
                                                                     <div class="clear">
                                                                     </div>
-                                                                </LayoutTemplate>
-                                                                <ItemTemplate>
-                                                                    <asp:HiddenField ID="hdnImageName" runat="server" Value='<%# Eval("ImageName") %>' />
-                                                                    <fieldset style="float: left; margin: 5px; padding: 2px 2px 2px 2px; position: relative; background: #eeeeee;"
-                                                                        class="myClass">
-                                                                        <a id="A1" href='<%# "~/res/product/album/" + Eval("ImageName") %>' runat="server" class="lightbox">
-                                                                            <img id="Img1" alt="" src='<%# "~/res/product/album/thumbs/" + Eval("ImageName") %>'
-                                                                                runat="server" width="100" height="100" />
-                                                                        </a>
-                                                                        <div align="right">
-                                                                            <asp:LinkButton ID="LinkButton1" OnClientClick="return confirm('Xóa ảnh?')" runat="server"
-                                                                                CommandName="Delete" CssClass="item"><img width="14px" class="vam" alt="" title="Xóa ảnh" src="../assets/images/trash.png" /></asp:LinkButton>
-                                                                        </div>
-                                                                    </fieldset>
-                                                                </ItemTemplate>
-                                                            </asp:RadListView>
-                                                        </asp:RadAjaxPanel>
+                                                                </asp:Panel>
+                                                            </EditItemTemplate>
+                                                        </asp:RadListView>
+                                                        <asp:ObjectDataSource ID="OdsProjectPhotoAlbum" runat="server" DeleteMethod="ProjectImageDelete"
+                                                            SelectMethod="ProjectImageSelectAll" TypeName="TLLib.ProjectImage" UpdateMethod="ProjectImageUpdate">
+                                                            <DeleteParameters>
+                                                                <asp:Parameter Name="ProjectImageID" Type="String" />
+                                                            </DeleteParameters>
+                                                            <SelectParameters>
+                                                                <asp:ControlParameter Name="ProjectID" ControlID="hdnProjectID" PropertyName="Value"
+                                                                    Type="String" />
+                                                                <asp:Parameter Name="IsAvailable" Type="String" />
+                                                                <asp:Parameter Name="Priority" Type="String" />
+                                                                <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                                                            </SelectParameters>
+                                                            <UpdateParameters>
+                                                                <asp:Parameter Name="ProjectImageID" Type="String" />
+                                                                <asp:Parameter Name="ImageName" Type="String" />
+                                                                <asp:Parameter Name="ConvertedProjectTitle" Type="String" />
+                                                                <asp:Parameter Name="Title" Type="String" />
+                                                                <asp:Parameter Name="Descripttion" Type="String" />
+                                                                <asp:Parameter Name="TitleEn" Type="String" />
+                                                                <asp:Parameter Name="DescripttionEn" Type="String" />
+                                                                <asp:ControlParameter Name="ProjectID" ControlID="hdnProjectID" PropertyName="Value"
+                                                                    Type="String" />
+                                                                <asp:Parameter Name="IsAvailable" Type="String" />
+                                                                <asp:Parameter Name="Priority" Type="String" />
+                                                            </UpdateParameters>
+                                                        </asp:ObjectDataSource>
+                                                        <asp:RadListView runat="server" ID="RadListView2" PageSize="100" Width="100%" Visible='<%# (Container is GridEditFormInsertItem) ? true : false %>'
+                                                            OnItemCommand="RadListView2_ItemCommand">
+                                                            <LayoutTemplate>
+                                                                <div runat="server" id="itemPlaceholder" />
+                                                                <div class="clear">
+                                                                </div>
+                                                            </LayoutTemplate>
+                                                            <ItemTemplate>
+                                                                <asp:HiddenField ID="hdnImageName" runat="server" Value='<%# Eval("ImageName") %>' />
+                                                                <fieldset style="float: left; margin: 5px; padding: 2px 2px 2px 2px; position: relative; background: #eeeeee;"
+                                                                    class="myClass">
+                                                                    <a id="A1" href='<%# "~/res/product/album/" + Eval("ImageName") %>' runat="server" class="lightbox">
+                                                                        <img id="Img1" alt="" src='<%# "~/res/product/album/thumbs/" + Eval("ImageName") %>'
+                                                                            runat="server" width="100" height="100" />
+                                                                    </a>
+                                                                    <div align="right">
+                                                                        <asp:LinkButton ID="LinkButton1" OnClientClick="return confirm('Xóa ảnh?')" runat="server"
+                                                                            CommandName="Delete" CssClass="item"><img width="14px" class="vam" alt="" title="Xóa ảnh" src="../assets/images/trash.png" /></asp:LinkButton>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </ItemTemplate>
+                                                        </asp:RadListView>
                                                     </asp:RadAjaxPanel>
-                                                </div>
+                                                </asp:RadAjaxPanel>
                                             </div>
-                                        </td>      
+                                        </div>
+                                    </td>
                                 </tr>
                             </table>
                         </asp:Panel>

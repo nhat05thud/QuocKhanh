@@ -252,7 +252,8 @@
                                             Culture="vi-VN" Language="vi-VN" InputSize="69" AllowedFileExtensions=".jpg,.jpeg,.gif,.png" />
                                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Sai định dạng ảnh (*.jpg, *.jpeg, *.gif, *.png)"
                                             ClientValidationFunction="validateRadUpload" Display="Dynamic"></asp:CustomValidator>
-                                    </td>
+                                      <br />
+                                                    KT : 131 x 31</td>
                                 </tr>
                                 <tr>
                                     <td class="left" valign="top">Tên đối tác

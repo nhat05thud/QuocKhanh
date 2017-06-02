@@ -383,6 +383,8 @@
                                                                 Localization-Remove="Xóa" OnFileUploaded="FileImageAlbum_FileUploaded">
                                                             </asp:RadAsyncUpload>--%>
                                                             <asp:HiddenField ID="hdnNewImageName" runat="server" />
+                                                            <br />       
+                                                            KT : 270 x 195
                                                         </td>
                                                     </tr>
                                                     <tr class="invisible">

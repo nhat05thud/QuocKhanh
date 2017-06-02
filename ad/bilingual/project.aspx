@@ -383,7 +383,8 @@
                                                                 Localization-Remove="Xóa" OnFileUploaded="FileImageAlbum_FileUploaded">
                                                             </asp:RadAsyncUpload>--%>
                                                             <asp:HiddenField ID="hdnNewImageName" runat="server" />
-                                                        </td>
+                                                        <br />
+                                                            KT: 420 x 301 </td>
                                                     </tr>
                                                     <tr class="invisible">
                                                         <td class="left" colspan="2">
@@ -644,6 +645,8 @@
                                                     <asp:RadButton ID="btnUpload" runat="server" Text="Tải lên" ShowPostBackMask="False">
                                                         <Icon PrimaryIconUrl="~/ad/assets/images/up.png" />
                                                     </asp:RadButton>
+                                                       <br />       
+                                                            KT : 680 x 488
                                                     <asp:RadAjaxPanel ID="RadAjaxPanel3" runat="server" LoadingPanelID="RadAjaxLoadingPanel1">
                                                         <asp:RadListView runat="server" ID="RadListView1" DataSourceID="OdsProjectPhotoAlbum"
                                                             DataKeyNames="ProjectImageID" OverrideDataSourceControlSorting="True" OnItemCommand="RadListView1_ItemCommand"

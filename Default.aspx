@@ -42,49 +42,13 @@
     </asp:ObjectDataSource>
     <section class="aboutUs">
         <div class="container">
-            <div class="left">
-                <asp:Repeater ID="Repeater1" runat="server"
-                    DataSourceID="ObjectDataSource4" EnableViewState="false">
-                    <ItemTemplate>
-                        <%# Eval("Description") %>
-                    </ItemTemplate>
-                </asp:Repeater>
-                <div class="clr"></div>
-                <div class="readmore">
-                    <a href="#">xem thêm</a>
-                </div>
-            </div>
-            <div class="right">
-                <div class="item-cate">
-                    <div class="item">
-                        <a href="#">
-                            <div class="img">
-                                <img src="assets/images/gt1.png" alt="" />
-                            </div>
-                            <p>
-                                Uy tín, <br />
-                                Chất lượng
-                            </p>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <div class="img">
-                                <img src="assets/images/gt2.png" alt="" />
-                            </div>
-                            <p>Trang thiết bị tiên tiến</p>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <div class="img">
-                                <img src="assets/images/gt3.png" alt="" />
-                            </div>
-                            <p>Đội ngũ kỹ thuật chuyên môn cao</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <asp:Repeater ID="Repeater1" runat="server"
+                DataSourceID="ObjectDataSource4" EnableViewState="false">
+                <ItemTemplate>
+                    <%# Eval("Description") %>
+                </ItemTemplate>
+            </asp:Repeater>
+
         </div>
     </section>
     <asp:ObjectDataSource ID="ObjectDataSource4" runat="server"

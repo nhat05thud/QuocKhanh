@@ -43,7 +43,7 @@ public partial class site : System.Web.UI.MasterPage
     {
         if (txtTimKiem.Text != "")
         {
-            Response.Redirect("tim-kiem.aspx?keyword=" + txtTimKiem.Text);
+            Response.Redirect("search.aspx?kw=" + txtTimKiem.Text);
         }
         else
         {
