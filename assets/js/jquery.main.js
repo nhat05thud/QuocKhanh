@@ -11,8 +11,8 @@
 })(jQuery);
 $(document).ready(function () {
     setTimeout(function () {
-        EqualSizer('.secNews .cate-news .item');
-    },500);
+        EqualSizer('.construction-cate .item,.news-cate .item');
+    }, 500);
 });
 function addClassGrid() {
     $('.proService .grid .grid-item').first().addClass('grid-item-width2 grid-item-height2');
